@@ -67,7 +67,7 @@ with requests.Session() as session:
         raise RuntimeError(f"You have failed {login_count} times. Please try again in a minute.")
 
     # Device info
-    # NOTE: it used to be possible to get serial number even without login, on older firmaware
+    # NOTE: it used to be possible to get serial number (which contained password!) even without login, on older firmaware
     device_info_respone = session.get(url + "api/system/deviceinfo")
     serial_number = parse(device_info_respone)["SerialNumber"]
     print(f"Serial Number: {serial_number[:-8] + '*' * 8}")
